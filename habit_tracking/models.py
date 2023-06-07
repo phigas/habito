@@ -9,7 +9,7 @@ class Habit(models.Model):
     # maybe change this so that we can create with other date for testing (see documentation)
     frequency_goal = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(7)]) 
     # habits are minimum once per week for other tasks cretate another feature like reminders
-    colour = models.CharField(max_length=7) 
+    colour = models.CharField(max_length=7, default='#ffa500') 
     # maybe add a regex valication so only valid colours are allowed
     
     # maybe a description
@@ -24,7 +24,7 @@ class Day(models.Model):
     # maybe day of the week
     
     def __str__(self):
-        return self.date
+        return str(self.date)
 
 
 class HabitTracking(models.Model):
@@ -36,4 +36,4 @@ class HabitTracking(models.Model):
     # maybe work with percentages or add a field for goal of this day (because the goal might change)
     
     def __str__(self):
-        return f'{self.date}, {self.date}'
+        return f'{self.habit}, {self.date}'

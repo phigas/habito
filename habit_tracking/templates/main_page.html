@@ -1,0 +1,10 @@
+<html>
+<body>
+    <h1>Welcome to the Habit Tracker</h1>
+    <ul>
+        {% for habit in habits %}
+        <li>{{ habit.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
