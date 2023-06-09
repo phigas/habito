@@ -7,13 +7,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'normalize.css' %}">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
+
 <body>
-    <h1>Welcome to the Habit Tracker</h1>
-    <ul>
+    <header class="main-header">
+        <h1>Welcome to habito</h1>
+    </header>
+
+    <div>
         {% for habit in habits %}
-        <li>{{ habit.name }}</li>
+        <div class="habit-tracker" style="background-color: {{ habit.colour }};">
+            <a><strong>{{ habit.name }}</strong></a>
+
+            <div class="daily-button-container">
+                <div class="daily-button unclicked" id="{{ habit.name }}Button1"></div>
+                <div class="daily-button unclicked" id="{{ habit.name }}Button2"></div>
+                <div class="daily-button unclicked"></div>
+                <div class="daily-button unclicked"></div>
+                <div class="daily-button unclicked"></div>
+                <div class="daily-button deactivated"></div>
+                <div class="daily-button unclicked" id="testbutton"></div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
+    
+    <script src="{% static 'script.js' %}"></script>
 </body>
 </html>
